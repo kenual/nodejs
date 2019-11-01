@@ -37,7 +37,26 @@ touch src/index.js
   },
   ...
 ```
-### Run start Task to execute src/index.js
+
+### Run start Task to Execute src/index.js
 ```
 npm start
+```
+
+### Monitor Change and Auto Start
+
+#### Install Development Dependency on *nodemon*
+```
+npm install nodemon --save-dev
+```
+
+#### Switch *package.json* to Use *nodemon*
+*package.json*
+```
+  ...
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  ...
 ```
