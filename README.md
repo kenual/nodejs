@@ -60,3 +60,35 @@ npm install nodemon --save-dev
   },
   ...
 ```
+
+## Add Babel to Supplement node.js with Latest ECMAScript Features
+### Install development dependency
+```
+npm install @babel/core @babel/node --save-dev
+```
+
+### Add babel to *package.json*
+*package.json*
+```
+ ...
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  ...
+```
+
+### Install latest ECMAScript features
+```
+npm install @babel/preset-env --save-dev
+```
+
+### Create project root *.babelrc* file
+*.babelrc*
+```
+{
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+```

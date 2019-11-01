@@ -4,7 +4,7 @@
   "description": "Modern Node.js Project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/kenual/nodejs#readme",
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
     "nodemon": "^1.19.4"
   }
 }
