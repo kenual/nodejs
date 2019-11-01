@@ -1,4 +1,4 @@
-# Modern Javascript Project
+# ECMAScript node.js Project
 
 ## Create Project Folder
 ```
@@ -91,4 +91,21 @@ npm install @babel/preset-env --save-dev
     "@babel/preset-env"
   ]
 }
+```
+
+## Externalize Configuration Settings to *.env* File
+### Install project dependency dotenv
+```
+npm install dotenv --save
+```
+
+### Create project root *.env* settings file
+```
+touch .env
+```
+
+### Read **MY_KEY** in .js code through dotenv/config
+```
+import 'dotenv/config'
+console.log(process.env.MY_KEY);
 ```

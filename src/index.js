@@ -1,4 +1,5 @@
 import http from "http"
+import "dotenv/config"
 
 const httpServer = http.createServer(
     (req, res) => {
@@ -7,6 +8,6 @@ const httpServer = http.createServer(
     }
 )
 
-httpServer.listen(8080)
+httpServer.listen(process.env.SERVER_HTTP_PORT)
 
-console.log("HTTP Server Started.")
+console.log(`HTTP server running on http:\/\/localhost:${process.env.SERVER_HTTP_PORT}`)
