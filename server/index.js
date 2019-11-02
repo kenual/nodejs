@@ -1,13 +1,29 @@
 import http from "http"
+import url from "url"
 import "dotenv/config"
+
+const STATIC = "/static/"
 
 const httpServer = http.createServer(
     (req, res) => {
-        res.write("Hello World!")
-        res.end()
+        let requestUrl = url.parse(req.url)
+        let path = requestUrl.path
+
+        if (path.startsWith(STATIC)) {
+            res.write(__dirname + path + '\n')
+            res.end()
+        } else {
+            res.write("Hello World!\n")
+            res.end()
+        }
     }
 )
 
-httpServer.listen(process.env.SERVER_HTTP_PORT)
+const port = process.env.SERVER_HTTP_PORT
+const baseUrl = "http:\/\/localhost:" + port
 
-console.log(`HTTP server running on http:\/\/localhost:${process.env.SERVER_HTTP_PORT}`)
+httpServer.listen(port)
+
+console.log(`HTTP server running on ${baseUrl}`)
+console.log(`Static 🔗 ${baseUrl}${STATIC}`)
+console.log(`       📁 ${__dirname}${STATIC}`)
