@@ -23,8 +23,8 @@ npm set init.license "MIT"
 
 ## Create Proejct Entry
 ```
-mkdir src
-touch src/index.js
+mkdir server
+touch server/index.js
 ```
 
 ## Add start Task to *package.json*
@@ -32,13 +32,13 @@ touch src/index.js
 ```
  ...
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   ...
 ```
 
-## Run start Task to Execute src/index.js
+## Run start Task to Execute server/index.js
 ```
 npm start
 ```
@@ -55,7 +55,7 @@ npm install nodemon --save-dev
 ```
   ...
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   ...
@@ -72,7 +72,7 @@ npm install @babel/core @babel/node --save-dev
 ```
  ...
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.js",
+    "start": "nodemon --exec babel-node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   ...
