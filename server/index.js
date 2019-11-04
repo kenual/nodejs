@@ -1,4 +1,6 @@
+import fs from "fs"
 import http from "http"
+import path from "path"
 import url from "url"
 import "dotenv/config"
 
@@ -6,12 +8,23 @@ const STATIC = "/static/"
 
 const httpServer = http.createServer(
     (req, res) => {
-        let requestUrl = url.parse(req.url)
-        let path = requestUrl.path
+        const requestUrl = url.parse(req.url)
+        const requestPath = requestUrl.path
 
-        if (path.startsWith(STATIC)) {
-            res.write(__dirname + path + '\n')
-            res.end()
+        if (requestPath.startsWith(STATIC)) {
+            const filePath = __dirname + requestPath
+
+            const exists = fs.existsSync(filePath)
+            if(!exists) {
+                res.write(`File ${filePath} not found`)
+                res.end('\n')    
+            } else {
+                const content = fs.readFileSync(filePath)                
+                const extension = path.parse(filePath).ext
+
+                res.setHeader('Content-type', `application/x-${extension}` )
+                res.end(content)
+            }
         } else {
             res.write("Hello World!\n")
             res.end()
